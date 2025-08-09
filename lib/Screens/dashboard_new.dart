@@ -5,6 +5,7 @@ import 'package:chatbox/Screens/transactions/addpage.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:fl_chart/fl_chart.dart';
 
 class Dashboard extends StatefulWidget {
   const Dashboard({super.key});

@@ -27,13 +27,11 @@ class _DetailsState extends State<Details> {
             Container(
               height: 650,
               width: double.infinity,
-              child: Expanded(
-                child: PageView.builder(
-                    itemCount: 3,
-                    itemBuilder: (BuildContext context, int index) {
-                      return Image.asset('Assets/Images/login${index + 1}.png');
-                    }),
-              ),
+              child: PageView.builder(
+                  itemCount: 3,
+                  itemBuilder: (BuildContext context, int index) {
+                    return Image.asset('Assets/Images/login${index + 1}.png');
+                  }),
             ),
             Padding(
               padding: const EdgeInsets.fromLTRB(16, 8, 16, 8),

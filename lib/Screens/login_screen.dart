@@ -50,23 +50,20 @@ class _LoginScreenState extends State<LoginScreen>
             SizedBox(
               height: 20,
             ),
-            Text("Don't have an account?"),
-            ElevatedButton(
-              style: ButtonStyle(
-                shadowColor: WidgetStateProperty.all<Color>(
-                    const Color.fromARGB(255, 255, 255, 255)),
-                elevation: WidgetStateProperty.all<double>(3),
-              ),
-              onPressed: () {
+            InkWell(
+              onTap: () {
                 Navigator.push(context, MaterialPageRoute(builder: (context) {
                   return const SignupScreen();
                 }));
               },
-              child: const Text('Sign Up'),
-            ),
-            SizedBox(
-              height: 150,
-            ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text("Don't have an account?"),
+                  Text("Signup", style: TextStyle(color: Colors.blue))
+                ],
+              ),
+            )
           ],
         ),
       ),
@@ -82,7 +79,7 @@ class _LoginScreenState extends State<LoginScreen>
         SizedBox(
             height: 150,
             width: 150,
-            child: Image.asset('Assets/Images/download.png')),
+            child: Image.asset('Assets/Images/playstore.png')),
         Padding(
           padding: const EdgeInsets.all(8.0),
           child: Card(
@@ -134,7 +131,7 @@ class _LoginScreenState extends State<LoginScreen>
                             password: password.text);
                       }
                     },
-                    child: const Text('lOGIN'),
+                    child: const Text('LOGIN'),
                   ),
                 ),
               ],

@@ -14,12 +14,14 @@ android {
     ndkVersion = flutter.ndkVersion
 
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+    // Use Java 17 for AGP 8.6+ compatibility
+    sourceCompatibility = JavaVersion.VERSION_17
+    targetCompatibility = JavaVersion.VERSION_17
     }
 
     kotlinOptions {
-        jvmTarget = JavaVersion.VERSION_1_8
+    // Match Kotlin JVM target to Java 17
+    jvmTarget = '17'
     }
 
     defaultConfig {
@@ -44,4 +46,9 @@ android {
 
 flutter {
     source = "../.."
+}
+
+// Rely on Flutter/FlutterFire plugins to manage Android dependencies.
+// Do not add explicit Firebase/Play dependencies here to avoid version conflicts.
+dependencies {
 }

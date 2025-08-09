@@ -32,26 +32,32 @@ class _SignupScreenState extends State<SignupScreen>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            AnimatedBuilder(
-                animation: opacity,
-                builder: (context, child) {
-                  return Opacity(
-                    opacity: opacity.value,
-                    child: login(Email, password, username, country),
-                  );
-                }),
-          ],
+      body: SingleChildScrollView(
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              SizedBox(height: 200),
+              AnimatedBuilder(
+                  animation: opacity,
+                  builder: (context, child) {
+                    return Opacity(
+                      opacity: opacity.value,
+                      child: login(Email, password, username),
+                    );
+                  }),
+            ],
+          ),
         ),
       ),
     );
   }
 
-  Widget login(TextEditingController Email, TextEditingController password,
-      TextEditingController username, TextEditingController country) {
+  Widget login(
+    TextEditingController Email,
+    TextEditingController password,
+    TextEditingController username,
+  ) {
     var userForm = GlobalKey<FormState>();
 
     return Form(
@@ -60,7 +66,7 @@ class _SignupScreenState extends State<SignupScreen>
         SizedBox(
             height: 150,
             width: 150,
-            child: Image.asset('Assets/Images/ic_launcher.png')),
+            child: Image.asset('Assets/Images/playstore.png')),
         Padding(
           padding: const EdgeInsets.all(8.0),
           child: Card(
@@ -116,39 +122,25 @@ class _SignupScreenState extends State<SignupScreen>
                     ),
                   ),
                 ),
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: TextFormField(
-                    validator: (userForm) {
-                      if (userForm == null || userForm.isEmpty) {
-                        return 'Please enter Country';
-                      }
-                      return null;
-                    },
-                    controller: country,
-                    decoration: InputDecoration(
-                      label: Text('Country'),
-                    ),
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(11.0),
-                  child: ElevatedButton(
-                    onPressed: () {
-                      if (userForm.currentState!.validate()) {
-                        SignUpController.createAccount(
-                            context: context,
-                            username: username.text,
-                            password: password.text,
-                            Email: Email.text,
-                            country: country.text);
-                      }
-                    },
-                    child: const Text('Create Account'),
-                  ),
-                ),
+                SizedBox(height: 20)
               ],
             ),
+          ),
+        ),
+        Padding(
+          padding: const EdgeInsets.all(11.0),
+          child: ElevatedButton(
+            onPressed: () {
+              if (userForm.currentState!.validate()) {
+                SignUpController.createAccount(
+                  context: context,
+                  username: username.text,
+                  password: password.text,
+                  Email: Email.text,
+                );
+              }
+            },
+            child: const Text('Create Account'),
           ),
         ),
       ]),
